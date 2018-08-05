@@ -1,9 +1,14 @@
-<app-header></app-header>
+<!--here we are listening to the feature selected event and 
+calling the onNavigate method, the event represents
+the event data being passed-->
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <!--Choose which component to show depending on what
+      is selected-->
+      <app-recipes *ngIf="loadedFeature==='recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature!=='recipe'"></app-shopping-list>
     </div>
   </div>
 </div>
