@@ -10,7 +10,10 @@
        
         <app-recipe-item *ngFor="let recipeEl of recipes"
        
-        [recipe]="recipeEl"></app-recipe-item>
+        [recipe]="recipeEl"
+        (recipeSelected)="onRecipeSelected(recipeEl)"
+        >
+    </app-recipe-item>
          <!--
             [recipe] is the component element in the target component
         -->
