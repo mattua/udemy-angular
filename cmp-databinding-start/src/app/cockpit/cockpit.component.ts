@@ -19,17 +19,22 @@ export class CockpitComponent implements OnInit {
   //newServerName = '';
   //newServerContent = '';
 
+  // serverContentInput matches the local element reference name in the html file
   @ViewChild('serverContentInput') serverContentInput:ElementRef;
 
   onAddServer(nameInput:HTMLInputElement) {
 
-    
-    this.serverCreated.emit({serverName:nameInput.value,
+    // notice how server name is being passed as a method argument
+    // whereas server content is declared as a viewchild component field
+    //
+    this.serverCreated.emit({
+      serverName:nameInput.value,
       serverContent:this.serverContentInput.nativeElement.value});
   }
 
   onAddBlueprint(nameInput:HTMLInputElement) {
-   this.bluePrintCreated.emit({serverName:nameInput.value,
+   this.bluePrintCreated.emit({
+    serverName:nameInput.value,
     serverContent:this.serverContentInput.nativeElement.value});
   }
 }
