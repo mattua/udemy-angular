@@ -3,8 +3,28 @@
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
       <hr>
+      <!--pass via property binding to app account component
+
+        
+        this.statusChanged.emit({id: this.id, newStatus: status});
+
+        so we are going to LISTEN TO THE statusChanged event emitter
+        property of the child component, and CALL on status changed
+        which is defined in this component
+
+        onStatusChanged(updateInfo: {id: number, newStatus: string}) {
+        this.accounts[updateInfo.id].status = updateInfo.newStatus;
+
+        (statusChanged)="onStatusChanged($event)"></app-account>
+
+        this line means call the onStatusChanged method in response
+        to the statusChange event emitter emitting an event
+  }
+
+      -->
       <app-account
         *ngFor="let acc of accounts; let i = index"
+        
         [account]="acc"
         [id]="i"
         (statusChanged)="onStatusChanged($event)"></app-account>
