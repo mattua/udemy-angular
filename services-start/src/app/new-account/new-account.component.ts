@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
-  styleUrls: ['./new-account.component.css']
+  styleUrls: ['./new-account.component.css'],
+  // service providers etc
+  providers:[LoggingService]
 })
 export class NewAccountComponent {
   
@@ -12,11 +15,14 @@ export class NewAccountComponent {
   // and the call its own event handler function
   @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
 
+  // just inform angular that we need a logging service
+  constructor(private loggingService:LoggingService){}
+
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountAdded.emit({
       name: accountName,
       status: accountStatus
     });
-    console.log('A server status changed, new status: ' + accountStatus);
+    this.loggingService.logStatusChange(accountStatus)
   }
 }
