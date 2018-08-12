@@ -1,5 +1,5 @@
 import { LoggingService } from "./logging.service";
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 
 // Need to attach some metdata
 // To show that we can inject something INTO this
@@ -21,6 +21,8 @@ export class AccountsService {
         }
       ];
 
+    statusUpdate = new EventEmitter<string>()
+    // again we now have the 
     constructor(private loggingService:LoggingService){}
 
     addAccount(name:string,status:string){
