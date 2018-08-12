@@ -16,9 +16,14 @@ export class RecipesComponent implements OnInit {
   setSelectedRecipe(event){
     this.selectedRecipe=event;
   }
-  constructor() { }
+  constructor(private recipeService:RecipeService) { }
 
   ngOnInit() {
+    this.recipeService.recipeSelected.subscribe(
+      (recipe:Recipe)=>{
+        this.setSelectedRecipe(recipe)
+      }
+    )
   }
 
 }
