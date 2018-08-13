@@ -4,9 +4,30 @@ import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
-  templateUrl: './recipe-item.component.html',
+  template: `
+  
+  <a href="#" class="list-group-item clearfix"
+(click)="onSelected()">
+    <!--so in response to the click event built in on this href
+    we call the onSelected method within this component-->
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+        <p class="list-group-item-heading">{{recipe.description}}</p>
+    </div>
+    <span class="pull-right">
+        <img 
+        [src]="recipe.imagePath" 
+        alt="{{recipe.name}}" 
+        class="img-responsive" style="max-height: 50px;">
+    </span>
+
+</a>
+  `,
   styleUrls: ['./recipe-item.component.css']
 })
+
+
+
 export class RecipeItemComponent implements OnInit {
 
   //this enables us to bind to this property from outside the component
