@@ -4,6 +4,7 @@
     <!--so in response to recipeWasSelected I will set selectedRecipe to the value of event-->
     <app-recipe-list></app-recipe-list>
   </div>
+  
   <div class="col-md-7">
     <app-recipe-detail
     *ngIf="selectedRecipe; else infoText"
