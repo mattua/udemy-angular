@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,9 +13,17 @@ export class RecipeDetailComponent implements OnInit {
   // = new Recipe('A Test Recipe','This is a test','https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/recipes/recipe/hero_article_image/2094/letterbox_ChickenChorizoPaella593x426.jpg');
     
 
-  constructor() { }
+  constructor(private recipeService:RecipeService) { }
 
   ngOnInit() {
+  }
+
+  onAddToShoppingList(){
+
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients)
+    
+    console.log('adding to recipe list')
+
   }
 
 }

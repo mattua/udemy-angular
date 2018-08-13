@@ -1,13 +1,15 @@
 import { Recipe } from "./recipe.model";
 import { ThrowStmt } from "../../../node_modules/@angular/compiler";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
+import { ShoppingListService } from "../shopping-list/shopping-list.service";
 
-
+@Injectable()
 export class RecipeService {
 
     recipeSelected = new EventEmitter<Recipe>()
 
+    constructor(private slService:ShoppingListService){}
     // array of recipes
 
     private recipes:Recipe[]= [
@@ -29,4 +31,10 @@ export class RecipeService {
         return this.recipes.slice()
     }
 
+    addIngredientsToShoppingList(ingredients:Ingredient[]){
+        // the particular instance of shopping list service will
+        // update its own list and also emit an event
+        
+        this.slService.addIngredients(ingredients)
+    }
 }

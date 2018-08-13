@@ -16,6 +16,9 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
 
     this.ingredients=this.slService.getIngredients()
+    
+    // all the ingredients are copied wholesale from the
+    // latest array in the service
     this.slService.ingredientsChanged.subscribe(
       (ingredients:Ingredient[])=>{
         this.ingredients=ingredients
